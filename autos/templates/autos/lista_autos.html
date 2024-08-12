@@ -1,0 +1,125 @@
+<!-- templates/autos/lista_autos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lista de Autos{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos específicos para la lista de autos */
+        body.lista-autos-page {
+            background-color: #e9ecef;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px; /* Ajusta el tamaño según sea necesario */
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            max-width: 150px;  /* Ajusta el tamaño según sea necesario */
+            height: auto;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .delete-button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-top: 10px;
+            background-color: #dc3545;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body class="lista-autos-page">
+    <header>
+        <h1>Lista de Autos</h1>
+    </header>
+    <div class="container">
+        {% if user.is_staff %}
+            <a href="{% url 'crear_auto' %}" class="button">Agregar Nuevo Auto</a>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for auto in autos %}
+                <tr>
+                    <td>{{ auto.id }}</td>
+                    <td>{{ auto.marca.nombre }}</td> <!-- Asegúrate de que 'nombre' es el campo correcto -->
+                    <td>{{ auto.modelo.nombre }}</td> <!-- Asegúrate de que 'nombre' es el campo correcto -->
+                    <td>${{ auto.precio }}</td>
+                    <td><img src="{{ auto.imagen.url }}" alt="{{ auto.modelo }}"></td>
+                    <td>
+                        <a href="{% url 'detalle_auto' auto.id %}" class="button">Ver Más</a>
+                        {% if user.is_staff %}
+                            <a href="{% url 'eliminar_auto' auto.id %}" class="delete-button" onclick="return confirm('¿Estás seguro de que deseas eliminar este auto?');">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

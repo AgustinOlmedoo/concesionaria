@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos específicos para la página de inicio */
+        body.index-page {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .comentarios, .comentarios-lista {
+            margin-top: 20px;
+        }
+        .comentarios form, .comentarios-lista {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .comentarios textarea {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .comentario {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .comentario:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="index-page">
+    <header>
+        <h1>Bienvenido</h1>
+    </header>
+    <div class="container">
+        <a href="{% url 'autos_list' %}">Ver Autos</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Cerrar Sesión</a>
+        {% else %}
+            <a href="{% url 'registro' %}">Registrarse</a>
+            <a href="{% url 'login' %}">Iniciar Sesión</a>
+        {% endif %}
+    </div>
+
+    <div class="container comentarios">
+        {% if user.is_authenticated %}
+            <h2>Deja un comentario:</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Enviar</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <div class="container comentarios-lista">
+        <h2>Comentarios:</h2>
+        {% for comentario in comentarios %}
+            <div class="comentario">
+                <p><strong>{{ comentario.usuario.username }}</strong> ({{ comentario.fecha_creacion }}):</p>
+                <p>{{ comentario.contenido }}</p>
+                {% if user.is_staff %}
+                    <form method="post" action="{% url 'eliminar_comentario' comentario.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Eliminar</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

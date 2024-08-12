@@ -1,0 +1,101 @@
+/* styles.css */
+
+/* Estilos generales para todas las plantillas */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para index.html */
+body.index-page {
+    background-color: #e9ecef;
+}
+
+.container {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+/* Estilos específicos para login.html */
+body.login-page {
+    background-color: #ffffff;
+}
+
+form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+
+form h1 {
+    margin-bottom: 1rem;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+
+/* static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    margin: 20px;
+}
+
+.comentarios {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comentarios-lista {
+    margin: 20px;
+}
+
+.comentario {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+form button {
+    margin-top: 10px;
+}

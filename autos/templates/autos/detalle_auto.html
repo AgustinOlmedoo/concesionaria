@@ -1,0 +1,57 @@
+<!-- templates/autos/detalle_auto.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Detalle del Auto{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilos específicos para el detalle del auto */
+        body.detalle-auto-page {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .auto-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="detalle-auto-page">
+    <header>
+        <h1>Detalle del Auto</h1>
+    </header>
+    <div class="container">
+        <img src="{{ auto.imagen.url }}" alt="Imagen del Auto" class="auto-image">
+        <a href="{% url 'autos_list' %}">Volver a la Lista de Autos</a>
+    </div>
+</body>
+</html>
