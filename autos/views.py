@@ -42,7 +42,7 @@ def registro(request):
     return render(request, 'autos/registro.html', {'form': form})
 
 def lista_autos(request):
-    autos = Auto.objects.all()  # Asegúrate de que el modelo Auto tiene los campos correctos
+    autos = Auto.objects.all()  
     return render(request, 'autos/lista_autos.html', {'autos': autos})
 
 def detalle_auto(request, auto_id):
@@ -55,7 +55,7 @@ def crear_auto(request):
         form = AutoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('autos_list')  # O cualquier otra vista a la que quieras redirigir después de guardar
+            return redirect('autos_list')  
     else:
         form = AutoForm()
     return render(request, 'autos/crear_auto.html', {'form': form})
