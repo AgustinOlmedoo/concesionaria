@@ -23,8 +23,8 @@ class ModeloAuto(models.Model):
         return f"{self.nombre} ({self.marca.nombre})"
 
 class Auto(models.Model):
-    marca = models.CharField(max_length=100)  # Cambiado a CharField
-    modelo = models.CharField(max_length=100)  # Cambiado a CharField
+    marca = models.CharField(max_length=100)  
+    modelo = models.CharField(max_length=100)  
     año = models.PositiveIntegerField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     imagen = models.ImageField(upload_to='autos/')
