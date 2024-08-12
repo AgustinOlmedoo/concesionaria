@@ -28,4 +28,4 @@ class RegistroForm(UserCreationForm):
 class AutoForm(forms.ModelForm):
     class Meta:
         model = Auto
-        fields = ['marca', 'modelo', 'año', 'precio', 'imagen']  # Incluye todos los campos
+        fields = ['marca', 'modelo', 'año', 'precio', 'imagen']
