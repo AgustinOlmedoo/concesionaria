@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('autos.urls')),  # Incluye las URLs de la aplicación autos para la ruta raíz
+    path('', include('autos.urls')),  
 ]
 
 if settings.DEBUG:
