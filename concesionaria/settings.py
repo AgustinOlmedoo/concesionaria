@@ -42,8 +42,8 @@ ROOT_URLCONF = 'concesionaria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Opcional: Carpeta global de plantillas
-        'APP_DIRS': True,  # Permite cargar plantillas desde las carpetas de plantillas de las aplicaciones
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], 
+        'APP_DIRS': True,  
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
