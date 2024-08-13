@@ -16,7 +16,7 @@
             padding: 0;
         }
         .container {
-            max-width: 1200px; /* Ajusta el tamaño según sea necesario */
+            max-width: 1200px; 
             margin: 20px auto;
             padding: 20px;
             background: #fff;
@@ -50,7 +50,7 @@
             text-decoration: underline;
         }
         img {
-            max-width: 150px;  /* Ajusta el tamaño según sea necesario */
+            max-width: 150px;  
             height: auto;
         }
         .button {
@@ -106,8 +106,8 @@
                 {% for auto in autos %}
                 <tr>
                     <td>{{ auto.id }}</td>
-                    <td>{{ auto.marca.nombre }}</td> <!-- Asegúrate de que 'nombre' es el campo correcto -->
-                    <td>{{ auto.modelo.nombre }}</td> <!-- Asegúrate de que 'nombre' es el campo correcto -->
+                    <td>{{ auto.marca.nombre }}</td> 
+                    <td>{{ auto.modelo.nombre }}</td> 
                     <td>${{ auto.precio }}</td>
                     <td><img src="{{ auto.imagen.url }}" alt="{{ auto.modelo }}"></td>
                     <td>
