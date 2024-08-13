@@ -57,7 +57,7 @@
     <div class="container">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }} <!-- Esto debería generar automáticamente un campo de entrada para 'año' -->
+            {{ form.as_p }} 
             <button type="submit">Guardar</button>
         </form>
     </div>
